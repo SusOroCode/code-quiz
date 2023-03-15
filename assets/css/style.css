@@ -1,7 +1,7 @@
 
 :root {
-    --buttonBackground: rgb(123, 20, 163);
-    --buttonBackgroundHover: rgb(165, 70, 202);
+    --buttonBackground: #8798b1;
+    --buttonBackgroundHover: #a1cbd6;
     --buttonTextColor: white;
     --font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     
@@ -11,11 +11,22 @@ header {
     display: flex;
     justify-content: space-between;
     align-content:normal;
-    background-color:rgb(239, 209, 248);
+    background-color: #B6BDC7;
     color: black;
     padding: 10px 70px;
     font-size: 1.5rem;
     
+}
+
+body {
+    background-image: url(../images/pexels-lumn-316466.jpg);
+    background-size: cover;
+    background-position: center;
+
+}
+
+body:before {
+    opacity: 20%;
 }
 
 .wrapper {
@@ -32,7 +43,7 @@ header {
     display: inline-block;
     padding: 10px 15px;
     border-radius: 5px;
-    border-color: rgb(112, 13, 151);
+    border-color: #4c5b70;
     font-size: 1.8rem;
     background: var(--buttonBackground);
     color: var(--buttonTextColor);
@@ -40,7 +51,7 @@ header {
 }
 
 .wrapper button:hover {
-    background:rgb(165, 70, 202);
+    background:var(--buttonBackgroundHover);
 }
 
 
