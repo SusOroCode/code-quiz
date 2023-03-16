@@ -29,17 +29,17 @@ body:before {
     opacity: 20%;
 }
 
-.wrapper {
+.start-screen {
    text-align: center;
    padding: 100px 100px;
    font-size: 2rem;
 }
 
-.wrapper p {
+.start-screen p {
     padding: 0px 120px;
 }
 
-.wrapper button {
+.start-screen button {
     display: inline-block;
     padding: 10px 15px;
     border-radius: 5px;
@@ -50,7 +50,7 @@ body:before {
 
 }
 
-.wrapper button:hover {
+.start-screen button:hover {
     background:var(--buttonBackgroundHover);
 }
 
