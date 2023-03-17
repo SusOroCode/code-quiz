@@ -12,15 +12,19 @@
 <body>
     <header>
         <p id="viewhighscores">View High Scores</p> <!--click to show high scores-->
-        <p>Time: <span id="countdown">0</span></p> <!-- counts the time down during the quiz-->
+        <p>Timer: <span id="countdown">0</span></p> <!-- counts the time down during the quiz-->
     </header>
     <main class="start-screen">
         <h1 id="titleandquestions">Coding Quiz Challenge</h1> <!--for starting title and all questions asked-->
-        <p id="requirement">Try to answer the following code-related questions within the time limit. Keep in mind that
-            incorrect answers will penalize your score/time by 10 seconds!</p>
-        <button id="start-btn">Start Quiz</button> <!--when clicked button starts the quiz-->
+        <div id="content">
+            <p>Try to answer the following code-related questions within the time limit. Keep in mind that
+                incorrect answers will penalize your score/time by 10 seconds!</p>
+            <button id="start-btn">Start Quiz</button>
         </div>
-        <div class="container"> <!-- container for answers-->
+        
+            <!--when clicked button starts the quiz-->
+
+        <!-- <div class="container">  container for answers
             <div id="question-container" class="hide">
                 <div id="question">Question</div>
                 <div id="answer-buttons" class="btn-grid">
@@ -29,11 +33,11 @@
                     <button class="btn">Answer 3</button>
                     <button class="btn">Answer 4</button>
                 </div>
-            </div>
-         <!--  <div class="controls">
-                <button id="start-btn" class="start-btn btn">Start</button> --> 
+            </div> -->
+        <!--  <div class="controls">
+                <button id="start-btn" class="start-btn btn">Start</button> -->
 
-            </div>
+        </div>
 
         </div>
     </main>
