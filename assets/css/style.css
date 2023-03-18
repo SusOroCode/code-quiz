@@ -54,7 +54,24 @@ body:before {
     background:var(--buttonBackgroundHover);
 }
 
+#content {
+    display: flex;
+    flex-direction: column;
+    /*justify-content: space-between;*/
+    align-items: center;
+   
+}
 
+.choice {
+    margin: 10px 10px; 
+    padding: 10px 10px; 
+    width: 20%;
+}
+
+.choice button:hover {
+    background:var(--buttonBackgroundHover);
+
+}
 
 .hide {
     display: none;
