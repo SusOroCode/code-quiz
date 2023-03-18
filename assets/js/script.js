@@ -46,18 +46,21 @@ var countDownEl = document.querySelector("#countdown"); //Top right timer showin
 var startButtonEl = document.querySelector("#start-btn"); // First page start button to click to start game
 var titleQuestionsEl = document.querySelector("#titleandquestions"); //Used for quiz title and all questions in following pages
 var contentEl = document.querySelector('#content');
+var rightwrongEl = document.querySelector('rightwrong');
 var timer;
-var choicesEl = document.querySelector('#answer-buttons');
+var rightwrongEl = document.querySelector('#rightwrong');
+
 
 var countDown = 60;
 var indexOfCurrentQuestion = 0;
+var score = 0;
+var timeSubtraction = 10;
 
 function renderNextQuestion() {
-  contentEl.innerHTML = '';
-  var currentQuestion = questions[indexOfCurrentQuestion];
+    contentEl.innerHTML = '';
+    var currentQuestion = questions[indexOfCurrentQuestion];
 
     titleQuestionsEl.textContent = currentQuestion.title;
-
 
     for (var i = 0; i < currentQuestion.choices.length; i++) {
         var buttonEl = document.createElement('button');
@@ -70,48 +73,74 @@ function renderNextQuestion() {
 }
 
 startButtonEl.addEventListener('click', function (event) {
+    countDownEl.textContent = countDown;
+
     event.preventDefault();
 
-    timer = setInterval(function () {
-
-        countDownEl.textContent = countDown;
+    var timer = setInterval(function () {
         countDown--;
+        countDownEl.textContent = countDown;
 
-        if (countDown <= 0) {
+        if (countDown === 0) {
+            //  countDownEl.textContent = 0;
+            clearInterval(timer);
+            // endGame();
             // function to close out game, game lost, 
             //score, change page to result page and see score
+            //sendMessage();
         }
 
     }, 1000);
+
+    // function sendMessage () {
+    //    highScoresEl.textContent = ' ';
+    //    var 
+    // }
 
     renderNextQuestion();
 });
 
 // When user clicks on choice button
 
-contentEl.addEventListener('click', function(event) {
+contentEl.addEventListener('click', function (event) {
     var currentQuestion = questions[indexOfCurrentQuestion];
 
     event.preventDefault();
 
     if (event.target.matches('.choice')) {
-        
-    }
+        var paraEl = document.createElement('paragraph');
+        paraEl.setAttribute('id', 'value');
 
-    if (event.target.textContent === currentQuestion.answer) {
-        // increae current score
-       
-    } else {
-        // decrease timer 10 seconds
-        // increase indexOf Current
-        // render next qurstion
+        if (event.target.textContent === currentQuestion.answer) {
+            score++;
+            paraEl.textContent = "Correct!";
+            indexOfCurrentQuestion++;
+            renderNextQuestion();
+        } else {
+            countDown = countDown - timeSubtraction;
+            paraEl.textContent = "Wrong!";
+
+
+
+            // increae current score
+
+            // decrease timer 10 seconds
+            // increase indexOf Current
+            // render next qurstion
+            //paraEl.appendChild(rightwrongEl);
+            //console.log("what is going on");
+
+            paraEl.appendChild(rightwrongEl);
+
+            indexOfCurrentQuestion++;
+            renderNextQuestion();
+        }
+
+
+
     }
 }
 )
-
-
-
-
 
 function answerQuestion(event) {
 
@@ -119,22 +148,23 @@ function answerQuestion(event) {
 
     if (btnEl.value !== questions[indexOfCurrentQuestion].answer) {
 
-        // indexOfCurrentQuestion++;
+        indexOfCurrentQuestion++;
 
         renderNextQuestion();
 
-        countDown = countDown - 10;
+        // countDown = countDown - 10;
 
     } else {
-        // indexOfCurrentQuestion++;
+        indexOfCurrentQuestion++;
         renderNextQuestion();
     }
 
-     // increase the indexOfCurrentQuestion
-        // render next question();
+    //increase the indexOfCurrentQuestion
+    //rendernextquestion();
 }
 
-choicesEl.onclick = answerQuestion;
+
+//choicesEl.onclick = answerQuestion;
 
 
 

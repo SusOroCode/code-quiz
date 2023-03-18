@@ -52,6 +52,8 @@ body:before {
 
 .start-screen button:hover {
     background:var(--buttonBackgroundHover);
+    transition: transform 140ms;
+    transform: scale(1.05);
 }
 
 #content {
@@ -70,6 +72,8 @@ body:before {
 
 .choice button:hover {
     background:var(--buttonBackgroundHover);
+    transition: transform 140ms;
+    transform: scale(1.05);
 
 }
 
