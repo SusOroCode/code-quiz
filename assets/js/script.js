@@ -46,15 +46,25 @@ var countDownEl = document.querySelector("#countdown"); //Top right timer showin
 var startButtonEl = document.querySelector("#start-btn"); // First page start button to click to start game
 var titleQuestionsEl = document.querySelector("#titleandquestions"); //Used for quiz title and all questions in following pages
 var contentEl = document.querySelector('#content');
-var rightwrongEl = document.querySelector('rightwrong');
 var timer;
+var dividerEl = document.querySelector('divider');
 var rightwrongEl = document.querySelector('#rightwrong');
 
 
 var countDown = 60;
 var indexOfCurrentQuestion = 0;
-var score = 0;
+var score = [];
 var timeSubtraction = 10;
+
+//View High Scores
+
+var viewHighScores = document.createElement
+
+function viewScores() {
+    document.querySelector("#viewhighscores").addEventListener("click", highScoresEl);
+}
+
+//Start Game
 
 function renderNextQuestion() {
     contentEl.innerHTML = '';
@@ -64,9 +74,7 @@ function renderNextQuestion() {
 
     for (var i = 0; i < currentQuestion.choices.length; i++) {
         var buttonEl = document.createElement('button');
-        // var choice = currentQuestion.choices[i];
         buttonEl.setAttribute('class', 'choice');
-        // buttonEl.setAttribute('value', choice);
         buttonEl.textContent = currentQuestion.choices[i];
         contentEl.appendChild(buttonEl);
     }
@@ -104,37 +112,27 @@ startButtonEl.addEventListener('click', function (event) {
 
 contentEl.addEventListener('click', function (event) {
     var currentQuestion = questions[indexOfCurrentQuestion];
-
     event.preventDefault();
 
     if (event.target.matches('.choice')) {
-        var paraEl = document.createElement('paragraph');
-        paraEl.setAttribute('id', 'value');
+        var yesno = document.createElement('p');
+        yesno.classList.add('p', 'p-answer');
 
-        if (event.target.textContent === currentQuestion.answer) {
+        if (event.target.textContent === currentQuestion[index].answer) {
             score++;
-            paraEl.textContent = "Correct!";
+            yesno.setAttribute("check", "Correct!");
             indexOfCurrentQuestion++;
             renderNextQuestion();
         } else {
             countDown = countDown - timeSubtraction;
-            paraEl.textContent = "Wrong!";
-
-
-
-            // increae current score
-
-            // decrease timer 10 seconds
-            // increase indexOf Current
-            // render next qurstion
-            //paraEl.appendChild(rightwrongEl);
-            //console.log("what is going on");
-
-            paraEl.appendChild(rightwrongEl);
-
+            yesno.setAttribute("check", "Wrong!");
+            yesno.textContent = currentQuestion[index];
+            yesno.appendChild(answer);
             indexOfCurrentQuestion++;
             renderNextQuestion();
         }
+
+       
 
 
 
