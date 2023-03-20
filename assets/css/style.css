@@ -80,3 +80,8 @@ body:before {
 .hide {
     display: none;
 }
+
+.createDiv {
+    margin: 20px 0;
+    font-family: var(--font-family);
+}

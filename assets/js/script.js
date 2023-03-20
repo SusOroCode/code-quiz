@@ -48,7 +48,8 @@ var titleQuestionsEl = document.querySelector("#titleandquestions"); //Used for 
 var contentEl = document.querySelector('#content');
 var timer;
 var dividerEl = document.querySelector('divider');
-var rightwrongEl = document.querySelector('#rightwrong');
+var questionAnswer = document.querySelector('.questionanswer');
+var yesNo = document.querySelector('#rightwrong');
 
 
 var countDown = 60;
@@ -115,51 +116,113 @@ contentEl.addEventListener('click', function (event) {
     event.preventDefault();
 
     if (event.target.matches('.choice')) {
-        var yesno = document.createElement('p');
-        yesno.classList.add('p', 'p-answer');
+        var createAnswer = document.createElement('div');
+        createAnswer.setAttribute('class', 'createDiv')
 
-        if (event.target.textContent === currentQuestion[index].answer) {
+        if (event.target.textContent == currentQuestion.answer) {
             score++;
-            yesno.setAttribute("check", "Correct!");
+            createAnswer.textContent = "Correct!";
             indexOfCurrentQuestion++;
             renderNextQuestion();
         } else {
             countDown = countDown - timeSubtraction;
-            yesno.setAttribute("check", "Wrong!");
-            yesno.textContent = currentQuestion[index];
-            yesno.appendChild(answer);
+            createAnswer.textContent = "Wrong!";
             indexOfCurrentQuestion++;
             renderNextQuestion();
         }
 
-       
-
-
+        questionAnswer.appendChild(createAnswer);
 
     }
+
+    // Asked ASKBot and got told to create variable for div and append child to div
+
+
+
+    if (indexOfCurrentQuestion >= questions.length) {
+        gameDone();
+        createAnswer.textContent = "All done!" + "Your final score is:" + score + "." + questions.length;
+    } else {
+        render(indexOfCurrentQuestion);
+    }
+
+    // if (indexOfCurrentQuestion < questions.length) {
+    //    renderNextQuestion(); 
+    // } else {
+    //     gameDone();
+    //    createAnswer.textContent = "All done!" + "Your final score is:" + score + "." + questions.length;
+
+    // }
+
+    //  renderNextQuestion();
+
+    // End of the Quiz
+
+    function gameDone() {
+        questionsAnswer.innerHTML = "";
+        countDownEl.innerHTML = "";
+
+        var createAllDone = document.createElement('h2');
+        createAllDone.setAttribute('id', 'createAllDone');
+        createAllDone.textContent = "All Done!";
+
+        questionAnswer.appendChild(createAllDone);
+    }
+
 }
 )
 
-function answerQuestion(event) {
 
-    var btnEl = event.target;
 
-    if (btnEl.value !== questions[indexOfCurrentQuestion].answer) {
 
-        indexOfCurrentQuestion++;
+var countDown = 60;
+var indexOfCurrentQuestion = 0;
+var score = [];
+var timeSubtraction = 10;
 
-        renderNextQuestion();
+
+
+
+
+
+var highScoresEl = document.querySelector("#viewhighscores"); //Top Paragraph link showing scores when clicked
+var countDownEl = document.querySelector("#countdown"); //Top right timer showing time left
+var startButtonEl = document.querySelector("#start-btn"); // First page start button to click to start game
+var titleQuestionsEl = document.querySelector("#titleandquestions"); //Used for quiz title and all questions in following pages
+var contentEl = document.querySelector('#content');
+var timer;
+var dividerEl = document.querySelector('divider');
+var questionAnswer = document.querySelector('.questionanswer');
+var yesNo = document.querySelector('#rightwrong');
+
+
+var countDown = 60;
+var indexOfCurrentQuestion = 0;
+var score = [];
+var timeSubtraction = 10;
+
+
+
+//function answerQuestion(event) {
+
+  //  var btnEl = event.target;
+
+  //  if (btnEl.value !== questions[indexOfCurrentQuestion].answer) {
+
+    //    indexOfCurrentQuestion++;
+
+   //     renderNextQuestion();
 
         // countDown = countDown - 10;
 
-    } else {
-        indexOfCurrentQuestion++;
-        renderNextQuestion();
-    }
+//    } else {
+    //    indexOfCurrentQuestion++;
+ //       renderNextQuestion();
+  //  }
 
     //increase the indexOfCurrentQuestion
     //rendernextquestion();
-}
+//}
 
 
 //choicesEl.onclick = answerQuestion;
