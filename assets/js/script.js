@@ -41,21 +41,34 @@ var questions = [
 //Variables
 
 
-var highScoresEl = document.querySelector("#viewhighscores"); //Top Paragraph link showing scores when clicked
-var countDownEl = document.querySelector("#countdown"); //Top right timer showing time left
-var startButtonEl = document.querySelector("#start-btn"); // First page start button to click to start game
-var titleQuestionsEl = document.querySelector("#titleandquestions"); //Used for quiz title and all questions in following pages
+var highScoresEl = document.querySelector('#viewhighscores'); //Top Paragraph link showing scores when clicked
+var countDownEl = document.querySelector('#countdown'); //Top right timer showing time left
+var startButtonEl = document.querySelector('#start-btn'); // First page start button to click to start game
+var titleQuestionsEl = document.querySelector('#titleandquestions'); //Used for quiz title and all questions in following pages
 var contentEl = document.querySelector('#content');
 var timer;
-var dividerEl = document.querySelector('divider');
+var dividerEl = document.querySelector('#divider');
 var questionAnswer = document.querySelector('.questionanswer');
 var yesNo = document.querySelector('#rightwrong');
 
 
+
 var countDown = 60;
 var indexOfCurrentQuestion = 0;
-var score = [];
+var score = 0;
 var timeSubtraction = 10;
+var gameOver = document.querySelector('#endgame');
+
+//High Score Page
+
+var highScoreEl = document.getElementById('highscore');
+var showHighScoreEl = document.getElementById('showhighscore');
+var highScoreListEl = document.getElementById('highscorelist');
+var buttonGoBack = document.getElementById('goback');
+var buttonClearScore = document.getElementById('clearhighscores');
+var startScreen = document.querySelector('.start-screen');
+
+
 
 //View High Scores
 
@@ -91,20 +104,18 @@ startButtonEl.addEventListener('click', function (event) {
         countDownEl.textContent = countDown;
 
         if (countDown === 0) {
-            //  countDownEl.textContent = 0;
+            
             clearInterval(timer);
-            // endGame();
-            // function to close out game, game lost, 
-            //score, change page to result page and see score
-            //sendMessage();
+        }
+
+        if (countDown <= 0) {
+            showHighScoreEl();
+            clearInterval(timer);
+
         }
 
     }, 1000);
 
-    // function sendMessage () {
-    //    highScoresEl.textContent = ' ';
-    //    var 
-    // }
 
     renderNextQuestion();
 });
@@ -138,28 +149,31 @@ contentEl.addEventListener('click', function (event) {
     // Asked ASKBot and got told to create variable for div and append child to div
 
 
-
-    if (indexOfCurrentQuestion >= questions.length) {
+  console.log(indexOfCurrentQuestion);
+    if  (questions.length -1 === indexOfCurrentQuestion) {
         gameDone();
         createAnswer.textContent = "All done!" + "Your final score is:" + score + "." + questions.length;
     } else {
-        render(indexOfCurrentQuestion);
+        gameOver = "true";
+       // showHighScoreEl();
     }
 
-    // if (indexOfCurrentQuestion < questions.length) {
-    //    renderNextQuestion(); 
-    // } else {
-    //     gameDone();
-    //    createAnswer.textContent = "All done!" + "Your final score is:" + score + "." + questions.length;
 
-    // }
-
-    //  renderNextQuestion();
 
     // End of the Quiz
 
+
+    var showTheHighScoreEl = function () {
+        startScreen.classlist.add('hide');
+
+           
+    }
+
     function gameDone() {
-        questionsAnswer.innerHTML = "";
+        console.log('Test');
+        document.querySelector('.questionanswer').classList.add('hide');
+        document.getElementById('endgame').classList.remove('hide');
+       // gameOver.classList.remove('hide');
         countDownEl.innerHTML = "";
 
         var createAllDone = document.createElement('h2');
@@ -169,64 +183,21 @@ contentEl.addEventListener('click', function (event) {
         questionAnswer.appendChild(createAllDone);
     }
 
+    var createInitialsInput = document.createElement('input');
+    createInitialsInput.type = "text";
+    createInitialsInput.name = "initials";
+    initialsForm.appendChild(createInitialsInput);
+
 }
 )
 
 
 
 
-var countDown = 60;
-var indexOfCurrentQuestion = 0;
-var score = [];
-var timeSubtraction = 10;
+
+
+// I ran out of time to finish the assignment
 
 
 
 
-
-
-var highScoresEl = document.querySelector("#viewhighscores"); //Top Paragraph link showing scores when clicked
-var countDownEl = document.querySelector("#countdown"); //Top right timer showing time left
-var startButtonEl = document.querySelector("#start-btn"); // First page start button to click to start game
-var titleQuestionsEl = document.querySelector("#titleandquestions"); //Used for quiz title and all questions in following pages
-var contentEl = document.querySelector('#content');
-var timer;
-var dividerEl = document.querySelector('divider');
-var questionAnswer = document.querySelector('.questionanswer');
-var yesNo = document.querySelector('#rightwrong');
-
-
-var countDown = 60;
-var indexOfCurrentQuestion = 0;
-var score = [];
-var timeSubtraction = 10;
-
-
-
-//function answerQuestion(event) {
-
-  //  var btnEl = event.target;
-
-  //  if (btnEl.value !== questions[indexOfCurrentQuestion].answer) {
-
-    //    indexOfCurrentQuestion++;
-
-   //     renderNextQuestion();
-
-        // countDown = countDown - 10;
-
-//    } else {
-    //    indexOfCurrentQuestion++;
- //       renderNextQuestion();
-  //  }
-
-    //increase the indexOfCurrentQuestion
-    //rendernextquestion();
-//}
-
-
-//choicesEl.onclick = answerQuestion;
-
-
-
-//event listener for user clicks button if wrong subrtract 10 seconds

@@ -85,3 +85,24 @@ body:before {
     margin: 20px 0;
     font-family: var(--font-family);
 }
+
+.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border-color: #4c5b70;
+    font-size: 1.8rem;
+    background: var(--buttonBackground);
+    color: var(--buttonTextColor);
+
+}
+
+.btn:hover {
+    background:var(--buttonBackgroundHover);
+    transition: transform 140ms;
+    transform: scale(1.05);
+}
+
+ol {
+    list-style-type: number;
+}
