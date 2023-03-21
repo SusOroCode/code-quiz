@@ -7,31 +7,42 @@ In this challenge, I was asked to build a timed coding quiz with multiple-choice
 ## Table of Contents 
 
 Please refer to Table Of Contents.
-
-- [Requirements](#requirements)
+- [Criteria](#criteria)
 - [Screenshot](#screenshot)
 - [Link To Deployed Application](#link-to-deployed-application)
 
-## Requirements
+## Criteria
 
-- An employee wants to generate a random and secure password
-- When the button is clicked a series of prompts are presented for password criteria
-- Prompts include length of password, upper cased characters, lower cased characters, numeric characters and special characters
-- The input is validated and at least one character choice has to be selected
-- When all prompts are selcted, a password is created based on the choices made
-- The password is displayed in the generator 
+-AS A coding boot camp student
+-I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
+-SO THAT I can gauge my progress compared to my peers
 
-CREDIT NOTES: I worked with a Tutor on putting statements into function, and with classmates in a group to finish the assignment.
+-GIVEN I am taking a code quiz
+-WHEN I click the start button
+-THEN a timer starts and I am presented with a question
+-WHEN I answer a question
+-THEN I am presented with another question
+-WHEN I answer a question incorrectly
+-THEN time is subtracted from the clock
+-WHEN all questions are answered or the timer reaches 0
+-THEN the game is over
+-WHEN the game is over
+-THEN I can save my initials and score
+
+CREDIT NOTES: I worked with a tutor and office hours for guidance.
 
 ## Screenshot 
 
-Please reference this photo for the password generator project.
+Please reference the gif and photos for the Code Quiz Project.
 
 
-![Password-Generator](Develop/assets/images/password-generator-screenshot.png)
+![Demo](assets/images/04-web-apis-homework-demo.gif)
+![Image1](assets/images/Code-Quiz.png)
+![Image2](assets/images/Code-Quiz1.png)
+![Image3](assets/images/Code-Quiz2.png)
 
 ## Link To Deployed Application
 
 Please refer to deployed application directly:
 
-[Password Generator](https://susorocode.github.io/password-generator/)
+[Code Quiz](https://susorocode.github.io/code-quiz/)
